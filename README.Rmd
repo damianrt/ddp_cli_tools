@@ -1,0 +1,53 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# ddp_cli_tools
+
+Linux-based command line tools to process economic data published by Federal Reserve.
+
+## Installation
+
+```bash
+git clone ...
+```
+
+## Examples
+
+
+Extract metadata to a csv
+```{bash }
+cat H15_data.xml | ./metadata.awk > H15_metadata.csv
+```
+
+```{bash }
+head H15_metadata.csv
+```
+
+Extract data to a csv
+```{bash }
+cat H15_data.xml | ./data.awk > H15_data.csv
+```
+
+```{bash }
+head H15_data.csv
+```
+
+Change the delimiter
+```{bash }
+cat H15_data.xml | ./data.awk -v sep='\t' > H15_data.tsv
+```
+
+```{bash }
+head H15_data.tsv
+```
