@@ -19,22 +19,27 @@ Linux-based command line tools to process economic data published by Federal Res
 ## Installation
 
 ```bash
-git clone ...
+git clone https://github.com/damianrt/ddp_cli_tools
 ```
 
 ## Examples
 
+Download a zip file
+```bash 
+wget "https://www.federalreserve.gov/datadownload/Output.aspx?rel=H15&filetype=zip" -O FRB_H15.zip
+```
 
-Extract metadata to a csv
+Extract the XML data file
 ```{bash }
-cat H15_data.xml | ./metadata.awk > H15_metadata.csv
+unzip -l FRB_H15.zip
 ```
 
 ```{bash }
-head H15_metadata.csv
+unzip -u FRB_H15.zip H15_data.xml
 ```
 
-Extract data to a csv
+
+Extract data
 ```{bash }
 cat H15_data.xml | ./data.awk > H15_data.csv
 ```
@@ -43,7 +48,18 @@ cat H15_data.xml | ./data.awk > H15_data.csv
 head H15_data.csv
 ```
 
-Change the delimiter
+
+Extract metadata
+```{bash }
+cat H15_data.xml | ./metadata.awk > H15_metadata.csv
+```
+
+```{bash }
+head H15_metadata.csv
+```
+
+
+Change the column delimiter to a tab
 ```{bash }
 cat H15_data.xml | ./data.awk -v sep='\t' > H15_data.tsv
 ```
@@ -51,3 +67,6 @@ cat H15_data.xml | ./data.awk -v sep='\t' > H15_data.tsv
 ```{bash }
 head H15_data.tsv
 ```
+
+
+

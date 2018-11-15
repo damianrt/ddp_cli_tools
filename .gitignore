@@ -2,3 +2,5 @@
 *.xml
 *.csv
 *.tsv
+.Rproj.user
+*.Rproj
