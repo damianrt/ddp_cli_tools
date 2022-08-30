@@ -42,12 +42,13 @@ BEGIN {
 
 /<frb:Obs/ {
 
-    for ( i = 1; i < NF; i++ ) {
+    for ( i = 1; i <= NF; i++ ) {
         if ( $i ~ /=/ ) {
             key = tolower($i)
             value = $i
             sub(/=.*/, "", key)
-            gsub(/.*=|"/, "", value)
+            sub(/.*="/, "", value)
+            sub(/".*/, "", value)
             obs[key] = value
         }
     }
